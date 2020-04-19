@@ -25,7 +25,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.provider.Settings;
 import android.util.Patterns;
 
-import com.mindorks.framework.mvvm.R;
+
+import com.example.myapplication.R;
 
 import java.io.IOException;
 import java.io.InputStream;

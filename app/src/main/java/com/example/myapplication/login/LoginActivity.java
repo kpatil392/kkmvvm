@@ -9,11 +9,11 @@ import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.databinding.MainActivityBinding;
 
-public class LoginActivity extends BaseActivity<MainActivityBinding,LoginViewModel> {
+public class LoginActivity extends BaseActivity<MainActivityBinding,LoginViewModel> implements LoginNavigator {
     LoginViewModel mLoginViewModel;
     @Override
     public int getBindingVariable() {
-        return BR.viewModel;
+        return BR.loginviewModel;
     }
 
     @Override
@@ -30,6 +30,7 @@ public class LoginActivity extends BaseActivity<MainActivityBinding,LoginViewMod
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mLoginViewModel.setNavigator(this);
        
     }
 
@@ -40,6 +41,21 @@ public class LoginActivity extends BaseActivity<MainActivityBinding,LoginViewMod
 
     @Override
     public void onFragmentDetached(String tag) {
+
+    }
+
+    @Override
+    public void handleError(Throwable throwable) {
+        
+    }
+
+    @Override
+    public void login() {
+
+    }
+
+    @Override
+    public void openMainActivity() {
 
     }
 }

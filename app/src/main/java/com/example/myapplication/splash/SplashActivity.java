@@ -1,20 +1,24 @@
 package com.example.myapplication.splash;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.myapplication.BR;
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
-import com.example.myapplication.databinding.MainActivityBinding;
-import com.example.myapplication.databinding.SplashActivityBinding;
 
-public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashViewModel> {
-    SplashViewModel mLoginViewModel;
+import com.example.myapplication.databinding.SplashActivityBinding;
+import com.example.myapplication.login.LoginActivity;
+
+public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashViewModel> implements SplashNavigator{
+    SplashViewModel mSplashViewModel;
     @Override
     public int getBindingVariable() {
-        return BR.viewModel;
+        return BR.splashviewModel;
     }
 
     @Override
@@ -24,13 +28,16 @@ public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashVi
 
     @Override
     public SplashViewModel getViewModel() {
-        mLoginViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
-        return mLoginViewModel;
+        mSplashViewModel = ViewModelProviders.of(this).get(SplashViewModel.class);
+        return mSplashViewModel;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // getSupportActionBar().hide();
+        mSplashViewModel.setNavigator(this);
+        mSplashViewModel.decideNextActivity();
        
     }
 
@@ -42,5 +49,15 @@ public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashVi
     @Override
     public void onFragmentDetached(String tag) {
 
+    }
+
+    @Override
+    public void openSplashActivity() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+              startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+            }
+        },3000);
     }
 }
