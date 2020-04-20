@@ -7,9 +7,9 @@ import android.os.Bundle;
 import com.example.myapplication.BR;
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
-import com.example.myapplication.databinding.MainActivityBinding;
+import com.example.myapplication.databinding.LoginActivityBinding;
 
-public class LoginActivity extends BaseActivity<MainActivityBinding,LoginViewModel> implements LoginNavigator {
+public class LoginActivity extends BaseActivity<LoginActivityBinding,LoginViewModel> implements LoginNavigator {
     LoginViewModel mLoginViewModel;
     @Override
     public int getBindingVariable() {
@@ -18,7 +18,7 @@ public class LoginActivity extends BaseActivity<MainActivityBinding,LoginViewMod
 
     @Override
     public int getLayoutId() {
-        return R.layout.main_activity;
+        return R.layout.login_activity;
     }
 
     @Override
@@ -30,6 +30,7 @@ public class LoginActivity extends BaseActivity<MainActivityBinding,LoginViewMod
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // getSupportActionBar().hide();
         mLoginViewModel.setNavigator(this);
        
     }

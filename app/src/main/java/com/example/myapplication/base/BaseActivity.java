@@ -1,19 +1,3 @@
-/*
- *  Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED
- *
- *  Licensed under the Apache License, Version 2.0 (the "License");
- *  you may not use this file except in compliance with the License.
- *  You may obtain a copy of the License at
- *
- *      https://mindorks.com/license/apache-v2
- *
- *  Unless required by applicable law or agreed to in writing, software
- *  distributed under the License is distributed on an "AS IS" BASIS,
- *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *  See the License for the specific language governing permissions and
- *  limitations under the License
- */
-
 package com.example.myapplication.base;
 
 import android.annotation.TargetApi;
@@ -30,16 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.example.myapplication.utils.CommonUtils;
+import com.example.myapplication.utils.NetworkUtils;
 
-/**
- * Created by amitshekhar on 07/07/17.
- */
 
 public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseViewModel> extends AppCompatActivity
         implements BaseFragment.Callback {
 
-  
-    
+
+    private ProgressDialog mProgressDialog;
     private T mViewDataBinding;
     private V mViewModel;
 
@@ -92,15 +75,15 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
         }
     }
 
-    /*public void hideLoading() {
+    public void hideLoading() {
         if (mProgressDialog != null && mProgressDialog.isShowing()) {
             mProgressDialog.cancel();
         }
-    }*/
+    }
 
-  /*  public boolean isNetworkConnected() {
+    public boolean isNetworkConnected() {
         return NetworkUtils.isNetworkConnected(getApplicationContext());
-    }*/
+    }
 
    /* public void openActivityOnTokenExpire() {
         startActivity(LoginActivity.newIntent(this));
@@ -108,16 +91,9 @@ public abstract class BaseActivity<T extends ViewDataBinding, V extends BaseView
     }*/
 
 
-    @TargetApi(Build.VERSION_CODES.M)
-    public void requestPermissionsSafely(String[] permissions, int requestCode) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            requestPermissions(permissions, requestCode);
-        }
-    }
-
     public void showLoading() {
-        //hideLoading();
-       // mProgressDialog = CommonUtils.showLoadingDialog(this);
+        hideLoading();
+        mProgressDialog = CommonUtils.showLoadingDialog(this);
     }
 
     private void performDataBinding() {

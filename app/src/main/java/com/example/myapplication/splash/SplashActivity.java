@@ -12,6 +12,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
 
 import com.example.myapplication.databinding.SplashActivityBinding;
+import com.example.myapplication.home.HomeActivity;
 import com.example.myapplication.login.LoginActivity;
 
 public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashViewModel> implements SplashNavigator{
@@ -35,7 +36,7 @@ public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // getSupportActionBar().hide();
+        getSupportActionBar().hide();
         mSplashViewModel.setNavigator(this);
         mSplashViewModel.decideNextActivity();
        
@@ -56,7 +57,7 @@ public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashVi
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-              startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+              startActivity(new Intent(SplashActivity.this, HomeActivity.class));
             }
         },3000);
     }

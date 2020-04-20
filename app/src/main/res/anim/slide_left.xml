@@ -13,8 +13,9 @@
   ~ limitations under the License
   -->
 
-<selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/light_gray" android:state_pressed="true" />
-    <item android:drawable="@color/black_effective" android:state_focused="true" />
-    <item android:drawable="@color/black_effective" />
-</selector>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <translate
+        android:duration="800"
+        android:fromXDelta="200%"
+        android:toXDelta="0" />
+</set>
