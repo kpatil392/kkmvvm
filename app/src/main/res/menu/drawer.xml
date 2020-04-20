@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group>
+    <group android:checkableBehavior="single">
         <item
             android:id="@+id/navItemAbout"
-            android:checked="true"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="@string/about" />
         <item
             android:id="@+id/navItemRateUs"
-            android:checked="true"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="@string/rate_us" />
         <item
             android:id="@+id/navItemFeed"
-            android:checked="true"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="@string/feed" />
         <item
             android:id="@+id/navItemLogout"
-            android:checked="true"
             android:icon="@drawable/ic_launcher_foreground"
             android:title="@string/logout" />
     </group>

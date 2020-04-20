@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
- 
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.mindorks.framework.mvvm.ui.main.MainActivity">
-
+    tools:context="com.example.myapplication.home.HomeActivity">
     <data>
-
         <variable
             name="homeviewModel"
             type="com.example.myapplication.home.HomeViewModel" />
-
     </data>
 
     <LinearLayout
@@ -19,13 +15,13 @@
         android:orientation="vertical"
         android:padding="16dp">
 
-        <com.example.myapplication.custom.RoundedImageView
+     <!--   <com.example.myapplication.custom.RoundedImageView
             android:id="@+id/iv_profile_pic"
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:layout_marginTop="40dp"
             android:scaleType="fitCenter"
-         />
+         />-->
 
         <TextView
             android:id="@+id/tv_name"

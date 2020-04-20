@@ -26,53 +26,19 @@
             android:layout_height="match_parent"
             android:fitsSystemWindows="true">
 
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:id="@+id/clRootView"
+            <include
+                android:id="@+id/appbar"
+                layout="@layout/hive_app_bar_main"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:clipChildren="false">
-
-                <LinearLayout
-                    android:id="@+id/activityMain"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.appbar.AppBarLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:elevation="5dp">
-
-                        <androidx.appcompat.widget.Toolbar
-                            android:id="@+id/toolbar"
-                            style="@style/Toolbar"
-                            app:subtitleTextColor="@color/white"
-                            app:title="@string/app_name"
-                            app:titleTextAppearance="@style/Toolbar.TitleText"
-                            app:titleTextColor="@color/white" />
-
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/light_gray" />
-
-                    </com.google.android.material.appbar.AppBarLayout>
-
-               
-                </LinearLayout>
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+                />
             <com.google.android.material.navigation.NavigationView
                 android:id="@+id/navigationView"
-                style="@style/Widget.Design.NavigationView"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="start"
-                android:background="@color/white"
-                app:itemBackground="@color/white"
-                app:itemIconTint="@color/black_effective"
-                app:itemTextColor="@color/black_effective"
-                app:menu="@menu/drawer">
+                app:menu="@menu/drawer"
+                >
 
                 <TextView
                     android:id="@+id/tvAppVersion"
@@ -80,9 +46,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
-                  android:text="@{homeviewModel.updateAppVersion}"
                     android:padding="5dp"/>
-                  
+                  <!--  android:text="@{homeviewModel.updateAppVersion}"-->
             </com.google.android.material.navigation.NavigationView>
 
         </androidx.drawerlayout.widget.DrawerLayout>
@@ -92,7 +57,8 @@
             style="?android:attr/progressBarStyleLarge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center"
+            android:visibility="gone"/>
          <!--   android:visibility="@{homeviewModel.isLoading ? View.VISIBLE : View.GONE}" />-->
 
     </FrameLayout>

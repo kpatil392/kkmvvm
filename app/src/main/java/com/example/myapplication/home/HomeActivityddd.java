@@ -1,11 +1,9 @@
 package com.example.myapplication.home;
 
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -24,17 +22,17 @@ import com.example.myapplication.R;
 import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.databinding.HomeActivityBinding;
 import com.example.myapplication.databinding.NavHeaderMainBinding;
-
 import com.example.myapplication.fragment.about.AboutFragment;
 import com.example.myapplication.fragment.product.ProductFragment;
+
 import com.google.android.material.navigation.NavigationView;
 
-public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewModel> implements HomeNavigator {
+public class HomeActivityddd extends BaseActivity<HomeActivityBinding, HomeViewModel> implements HomeNavigator {
 
     // index to identify current nav menu item
     public static int navItemIndex = 0;
     private boolean shouldLoadHomeFragOnBackPress = true;
-    private String[] activityTitles;
+    
     // tags used to attach the fragments
     private static final String TAG_HOME = "home";
     private static final String TAG_PHOTOS = "photos";
@@ -103,8 +101,9 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
         mHomeActivityBinding = getViewDataBinding();
         mHomeViewModel.setNavigator(this);
         mHandler = new Handler();
-        activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
+
         setUp();
+        setUpNavigationView();
         if (savedInstanceState == null) {
             navItemIndex = 0;
             CURRENT_TAG = TAG_HOME;
@@ -140,8 +139,9 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
         setUpNavigationView();
         String version = getString(R.string.version) + " " + BuildConfig.VERSION_NAME;
         mHomeViewModel.updateAppVersion(version);
-        //mHomeViewModel.onNavMenuCreated();
+        mHomeViewModel.onNavMenuCreated();
         
+     
     }
 
     private void setUpNavigationView() {
@@ -176,12 +176,6 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
                                 return false;
 
                         }
-                        if (item.isChecked()) {
-                            item.setChecked(false);
-                        } else {
-                            item.setChecked(true);
-                        }
-                        item.setChecked(true);
                         loadHomeFragment();
                         return true;
                         
@@ -189,7 +183,25 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
                 });
     }
 
-  
+    private void showAboutFragment() {
+        lockDrawer();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
+                .replace(R.id.frame, AboutFragment.newInstance(), AboutFragment.TAG)
+                .commit();
+    }
+    private void showProductFragment() {
+        lockDrawer();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .disallowAddToBackStack()
+                .setCustomAnimations(R.anim.slide_left, R.anim.slide_right)
+                .replace(R.id.frame, ProductFragment.newInstance(), ProductFragment.TAG)
+                .commit();
+    }
+
     private void unlockDrawer() {
         if (mDrawer != null) {
             mDrawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
@@ -212,16 +224,21 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
         }
     }
     private void loadHomeFragment() {
-           setToolbarTitle();
-           selectNavMenu();
-           if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
+       
+        // if user select the current navigation menu again, don't do anything
+        // just close the navigation drawer
+        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
             mDrawer.closeDrawers();
+
             // show or hide the fab button
             return;
         }
 
-      
-        Runnable mPendingRunnable = new Runnable() {
+        // Sometimes, when fragment has huge data, screen seems hanging
+        // when switching between navigation menus
+        // So using runnable, the fragment is loaded with cross fade effect
+        // This effect can be seen in GMail app
+       /* Runnable mPendingRunnable = new Runnable() {
             @Override
             public void run() {
                 // update the main content by replacing fragments
@@ -232,13 +249,13 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
                 fragmentTransaction.replace(R.id.frame, fragment, CURRENT_TAG);
                 fragmentTransaction.commitAllowingStateLoss();
             }
-        };
+        };*/
 
         // If mPendingRunnable is not null, then add to the message queue
-        if (mPendingRunnable != null) {
+       /* if (mPendingRunnable != null) {
             mHandler.post(mPendingRunnable);
         }
-        
+        */
         //Closing drawer on item click
         mDrawer.closeDrawers();
 
@@ -246,41 +263,7 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
         invalidateOptionsMenu();
     }
 
-    private void selectNavMenu() {
-        mNavigationView.getMenu().getItem(navItemIndex).setChecked(true);
-    }
-
-    private void setToolbarTitle() {
-        getSupportActionBar().setTitle(activityTitles[navItemIndex]);
-    }
-
-    private Fragment getHomeFragment() {
-        switch (navItemIndex) {
-            case 0:
-                // home
-                ProductFragment homeFragment = new ProductFragment();
-                return homeFragment;
-            case 1:
-                // photos
-                AboutFragment photosFragment = new AboutFragment();
-                return photosFragment;
-            case 2:
-                // movies fragment
-                AboutFragment moviesFragment = new AboutFragment();
-                return moviesFragment;
-            case 3:
-                // notifications fragment
-                AboutFragment notificationsFragment = new AboutFragment();
-                return notificationsFragment;
-
-            case 4:
-                // settings fragment
-                AboutFragment settingsFragment = new AboutFragment();
-                return settingsFragment;
-            default:
-                return new ProductFragment();
-        }
-    }
+    
     @Override
     public void onBackPressed() {
         if (mDrawer.isDrawerOpen(GravityCompat.START)) {

@@ -1,4 +1,4 @@
-package com.example.myapplication.fragment.about;
+package com.example.myapplication.fragment.photo;
 
 import android.os.Bundle;
 

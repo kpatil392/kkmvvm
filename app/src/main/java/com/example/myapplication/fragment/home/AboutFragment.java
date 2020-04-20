@@ -1,4 +1,4 @@
-package com.example.myapplication.fragment.about;
+package com.example.myapplication.fragment.home;
 
 import android.os.Bundle;
 
