@@ -1,4 +1,3 @@
-/*
 package com.example.myapplication.utils;
 
 import android.app.Activity;
@@ -10,6 +9,9 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 
+import androidx.appcompat.widget.AppCompatEditText;
+
+import com.example.myapplication.R;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -18,16 +20,13 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-*/
-/**
- * Created by Vishwnath on 11/10/19.
- *//*
 
-public class InputValidation implements AppConstants
+
+public class InputValidations implements AppConstants
 {
     private Context context;
 
-    public InputValidation(Context context) {
+    public InputValidations(Context context) {
         this.context = context;
     }
 
@@ -76,15 +75,8 @@ public class InputValidation implements AppConstants
     }
 
 
-    */
-/**
-     * method to check InputEditText has valid ic_email .
-     *
-     * @param textInputEditText
-     * @param textInputLayout
-     * @param message
-     * @return
-     *//*
+
+     
 
     public boolean isInputEditTextEmail(TextInputEditText textInputEditText, TextInputLayout textInputLayout, String message) {
         String value = textInputEditText.getText().toString().trim();
@@ -114,12 +106,7 @@ public class InputValidation implements AppConstants
         return true;
     }
 
-    */
-/**
-     * method to Hide keyboard
-     *
-     * @param view
-     *//*
+   
 
     public void hideKeyboardFrom(View view) {
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -155,7 +142,7 @@ public class InputValidation implements AppConstants
     }
 
     public boolean isInputSpinnerFilled(String textInputString, TextInputLayout textInputLayout, String message) {
-        if (textInputString.equals(context.getResources().getString(R.string.select_city))) {
+        if (textInputString.equals(context.getResources().getString(R.string.app_name))) {
             textInputLayout.setErrorEnabled(true);
             textInputLayout.setError(message);
             hideKeyboardFrom(textInputLayout);
@@ -288,7 +275,7 @@ public class InputValidation implements AppConstants
 
 
     //Method for getting age from date of birth
-    private Integer getAge(String date){
+    public Integer getAge(String date){
         Calendar dob = Calendar.getInstance();
         Calendar today = Calendar.getInstance();
         try {
@@ -307,4 +294,3 @@ public class InputValidation implements AppConstants
     }
 
 }
-*/

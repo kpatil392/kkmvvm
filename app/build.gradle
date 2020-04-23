@@ -39,4 +39,14 @@ dependencies {
     implementation "androidx.cardview:cardview:$Version"
     implementation "com.google.android.material:material:$Version"
     implementation "androidx.recyclerview:recyclerview:1.0.0"
+   def  rx2FastAndroidNetworking = '1.0.1'
+
+    // network
+     implementation "com.amitshekhar.android:rx2-android-networking:$rx2FastAndroidNetworking"
+
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    /*implementation 'com.squareup.okhttp3:logging-interceptor:3.12.3'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.3'*/
+
 }

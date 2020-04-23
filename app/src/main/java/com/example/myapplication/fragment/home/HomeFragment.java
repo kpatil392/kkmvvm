@@ -9,10 +9,12 @@ import com.example.myapplication.BR;
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
 import com.example.myapplication.databinding.FragmentHomeBinding;
+import com.example.myapplication.utils.InputValidations;
 
 public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> implements HomeNavigator {
     public static final String TAG = HomeFragment.class.getSimpleName();
     private HomeViewModel mHomeViewModel;
+    InputValidations mInputValidations;
 
     public static HomeFragment newInstance() {
         Bundle args = new Bundle();
@@ -39,7 +41,8 @@ public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewMode
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mHomeViewModel.setNavigator(this);
-        mHomeViewModel.setTvName("Hello");
+        mInputValidations=new InputValidations(getBaseActivity());
+        mHomeViewModel.setTvName(mInputValidations.getAge("03031992")+"");
     }
 
     @Override
