@@ -3,6 +3,7 @@ package com.example.myapplication.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.view.WindowManager;
@@ -280,8 +281,10 @@ public class InputValidations implements AppConstants
         Calendar today = Calendar.getInstance();
         try {
             dob.setTime(YYYY_MM_DD.parse(date));
+            Log.i("Age",YYYY_MM_DD.parse(date)+"");
         } catch (ParseException e) {
             e.printStackTrace();
+            Log.e("Age",e.toString()+"");
         }
 
         int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);

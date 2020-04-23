@@ -1,5 +1,8 @@
 package com.example.myapplication.fragment.home;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.myapplication.base.BaseViewModel;
@@ -24,5 +27,26 @@ public class HomeViewModel extends BaseViewModel<HomeNavigator> {
     {
         getNavigator().goBack();
     }
+    
+    public void createNoti()
+    {
+        getNavigator().createNotification();
+        Log.i("Noti","create");
+        
+    } 
+    public void cancelNoti()
+    {
+        Log.i("Noti","cancel");
+        getNavigator().cancelNotification();
+    }
+    public void singleNoti()
+    {
+        getNavigator().singleNotification();
+    } 
+    public void bundleNoti()
+    {
+        getNavigator().bundleNotification();
+    }
+    
   
 }

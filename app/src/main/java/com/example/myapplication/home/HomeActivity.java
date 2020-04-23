@@ -28,6 +28,7 @@ import com.example.myapplication.databinding.HomeActivityBinding;
 import com.example.myapplication.databinding.NavHeaderMainBinding;
 
 import com.example.myapplication.fragment.about.AboutFragment;
+import com.example.myapplication.fragment.home.HomeFragment;
 import com.example.myapplication.fragment.product.ProductFragment;
 import com.google.android.material.navigation.NavigationView;
 
@@ -263,7 +264,7 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
         switch (navItemIndex) {
             case 0:
                 // home
-                ProductFragment homeFragment = new ProductFragment();
+                HomeFragment homeFragment = new HomeFragment();
                 return homeFragment;
             case 1:
                 // photos
@@ -283,7 +284,7 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
                 AboutFragment settingsFragment = new AboutFragment();
                 return settingsFragment;
             default:
-                return new ProductFragment();
+                return new HomeFragment();
         }
     }
     @Override
