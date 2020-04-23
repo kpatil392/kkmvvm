@@ -1,5 +1,7 @@
 package com.example.myapplication.home;
 
+import android.content.Context;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 import android.os.Handler;
@@ -49,7 +51,10 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
     private Toolbar mToolbar;
     private HomeViewModel mHomeViewModel;
     private HomeActivityBinding mHomeActivityBinding;
-
+   /* public static Intent newIntent(Context context) {
+        Intent intent = new Intent(context, HomeActivity.class);
+        return intent;
+    }*/
     @Override
     public int getBindingVariable() {
         return BR.homeviewModel;
@@ -140,7 +145,7 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
         setUpNavigationView();
         String version = getString(R.string.version) + " " + BuildConfig.VERSION_NAME;
         mHomeViewModel.updateAppVersion(version);
-        //mHomeViewModel.onNavMenuCreated();
+        mHomeViewModel.onNavMenuCreated();
         
     }
 

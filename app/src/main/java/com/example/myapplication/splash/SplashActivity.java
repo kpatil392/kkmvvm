@@ -13,9 +13,11 @@ import com.example.myapplication.base.BaseActivity;
 import com.example.myapplication.databinding.SplashActivityBinding;
 
 import com.example.myapplication.home.HomeActivity;
+import com.example.myapplication.login.LoginActivity;
 
-public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashViewModel> implements SplashNavigator{
+public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashViewModel> implements SplashNavigator {
     SplashViewModel mSplashViewModel;
+
     @Override
     public int getBindingVariable() {
         return BR.splashviewModel;
@@ -38,7 +40,7 @@ public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashVi
         getSupportActionBar().hide();
         mSplashViewModel.setNavigator(this);
         mSplashViewModel.decideNextActivity();
-       
+
     }
 
     @Override
@@ -56,8 +58,10 @@ public class SplashActivity extends BaseActivity<SplashActivityBinding, SplashVi
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-              startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                //startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                startActivity(new Intent(SplashActivity.this, HomeActivity.class));
+                finish();
             }
-        },3000);
+        }, 3000);
     }
 }

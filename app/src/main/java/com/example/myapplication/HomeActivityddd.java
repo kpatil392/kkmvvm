@@ -1,4 +1,4 @@
-package com.example.myapplication.home;
+package com.example.myapplication;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +25,8 @@ import com.example.myapplication.databinding.NavHeaderMainBinding;
 import com.example.myapplication.fragment.about.AboutFragment;
 import com.example.myapplication.fragment.product.ProductFragment;
 
+import com.example.myapplication.home.HomeNavigator;
+import com.example.myapplication.home.HomeViewModel;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeActivityddd extends BaseActivity<HomeActivityBinding, HomeViewModel> implements HomeNavigator {

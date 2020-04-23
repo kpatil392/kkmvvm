@@ -8,38 +8,38 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.myapplication.BR;
 import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
-import com.example.myapplication.databinding.FragmentAboutBinding;
+import com.example.myapplication.databinding.FragmentHomeBinding;
 
-public class AboutFragment extends BaseFragment<FragmentAboutBinding, AboutViewModel> implements AboutNAvigator {
-    public static final String TAG = AboutFragment.class.getSimpleName();
-    private AboutViewModel mAboutViewModel;
+public class HomeFragment extends BaseFragment<FragmentHomeBinding, HomeViewModel> implements HomeNavigator {
+    public static final String TAG = HomeFragment.class.getSimpleName();
+    private HomeViewModel mHomeViewModel;
 
-    public static AboutFragment newInstance() {
+    public static HomeFragment newInstance() {
         Bundle args = new Bundle();
-        AboutFragment fragment = new AboutFragment();
+        HomeFragment fragment = new HomeFragment();
         fragment.setArguments(args);
         return fragment;
     }
     @Override
     public int getBindingVariable() {
-        return BR.aboutviewModel;
+        return BR.homeviewModel;
     }
 
     @Override
     public int getLayoutId() {
-        return R.layout.fragment_about;
+        return R.layout.fragment_home;
     }
 
     @Override
-    public AboutViewModel getViewModel() {
-        mAboutViewModel= ViewModelProviders.of(this).get(AboutViewModel.class);
-        return mAboutViewModel;
+    public HomeViewModel getViewModel() {
+        mHomeViewModel= ViewModelProviders.of(this).get(HomeViewModel.class);
+        return mHomeViewModel;
     }
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mAboutViewModel.setNavigator(this);
-        getBaseActivity().getSupportActionBar().setHomeButtonEnabled(true);
+        mHomeViewModel.setNavigator(this);
+        mHomeViewModel.setTvName("Hello");
     }
 
     @Override

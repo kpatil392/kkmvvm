@@ -1,8 +1,8 @@
-package com.example.myapplication.fragment.home;
+package com.example.myapplication.fragment.photo;
 
 import com.example.myapplication.base.BaseViewModel;
 
-public class AboutViewModel extends BaseViewModel<AboutNAvigator> {
+public class PhotoViewModel extends BaseViewModel<PhotoNavigator> {
     @Override
     protected void onCleared() {
         super.onCleared();

@@ -26,19 +26,21 @@
         <TextView
             android:id="@+id/tv_name"
             style="@style/TextStyle.Title"
+            android:textColor="@color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:text="@{homeviewModel.username}"
              />
-        <!--android:text="@{homeviewModel.userName}"-->
 
         <TextView
             android:id="@+id/tv_email"
+            android:textColor="@color/black"
             style="@style/TextStyle.Title.Sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{homeviewModel.userEmail}"
              />
-        <!--android:text="@{homeviewModel.userEmail}"-->
 
     </LinearLayout>
 

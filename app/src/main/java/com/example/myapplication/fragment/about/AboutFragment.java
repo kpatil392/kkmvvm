@@ -10,7 +10,7 @@ import com.example.myapplication.R;
 import com.example.myapplication.base.BaseFragment;
 import com.example.myapplication.databinding.FragmentAboutBinding;
 
-public class AboutFragment extends BaseFragment<FragmentAboutBinding, AboutViewModel> implements AboutNAvigator {
+public class AboutFragment extends BaseFragment<FragmentAboutBinding, AboutViewModel> implements AboutNavigator {
     public static final String TAG = AboutFragment.class.getSimpleName();
     private AboutViewModel mAboutViewModel;
 
@@ -39,7 +39,6 @@ public class AboutFragment extends BaseFragment<FragmentAboutBinding, AboutViewM
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mAboutViewModel.setNavigator(this);
-        getBaseActivity().getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     @Override

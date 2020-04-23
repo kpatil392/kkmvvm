@@ -4,18 +4,18 @@
         <item
             android:id="@+id/navItemAbout"
             android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/about" />
+            android:title="@string/nav_home" />
         <item
             android:id="@+id/navItemRateUs"
             android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/rate_us" />
+            android:title="@string/nav_photos" />
         <item
             android:id="@+id/navItemFeed"
             android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/feed" />
+            android:title="@string/nav_movies" />
         <item
             android:id="@+id/navItemLogout"
             android:icon="@drawable/ic_launcher_foreground"
-            android:title="@string/logout" />
+            android:title="@string/nav_notifications" />
     </group>
 </menu>

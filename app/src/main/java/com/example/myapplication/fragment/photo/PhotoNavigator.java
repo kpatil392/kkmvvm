@@ -1,5 +1,5 @@
 package com.example.myapplication.fragment.photo;
 
-public interface AboutNAvigator {
+public interface PhotoNavigator {
     void goBack();
 }

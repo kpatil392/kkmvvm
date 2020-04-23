@@ -1,5 +1,5 @@
 package com.example.myapplication.fragment.about;
 
-public interface AboutNAvigator {
+public interface AboutNavigator {
     void goBack();
 }
