@@ -3,6 +3,7 @@ package com.example.myapplication.home;
 import android.content.Context;
 import android.content.Intent;
 import android.nfc.Tag;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -31,7 +33,7 @@ import com.example.myapplication.fragment.about.AboutFragment;
 import com.example.myapplication.fragment.home.HomeFragment;
 import com.example.myapplication.fragment.product.ProductFragment;
 import com.google.android.material.navigation.NavigationView;
-
+@RequiresApi(api = Build.VERSION_CODES.O)
 public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewModel> implements HomeNavigator {
 
     // index to identify current nav menu item
@@ -276,7 +278,7 @@ public class HomeActivity extends BaseActivity<HomeActivityBinding, HomeViewMode
                 return moviesFragment;
             case 3:
                 // notifications fragment
-                AboutFragment notificationsFragment = new AboutFragment();
+                ProductFragment notificationsFragment = new ProductFragment();
                 return notificationsFragment;
 
             case 4:

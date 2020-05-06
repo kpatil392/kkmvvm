@@ -11,4 +11,12 @@ public class ProductViewModel extends BaseViewModel<ProductNavigator> {
     {
         getNavigator().goBack();
     }
+    public void btnOne()
+    {
+        getNavigator().btn1();
+    }
+    public void btnTwo()
+    {
+        getNavigator().btn2();
+    }
 }
